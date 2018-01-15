@@ -1,5 +1,7 @@
 package com.mangolab.domain.usecase;
 
+import com.mangolab.domain.usecase.manager.DisposableManager;
+
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 import io.reactivex.observers.DisposableObserver;
@@ -22,7 +24,6 @@ abstract class UseCase<T>{
 		}
 		final Observable<T> observableUseCase = this.createObservableUseCase().subscribeOn(backendExecutor).observeOn(uiThreadExecutor);
 		DisposableObserver disposableObserverData = observableUseCase.subscribeWith(disposableObserver);
-
 		DisposableManager.add(disposableObserverData);
 	}
 

@@ -1,4 +1,4 @@
-package com.mangolab.domain.usecase;
+package com.mangolab.domain.usecase.manager;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -12,6 +12,10 @@ public class DisposableManager {
 
 	public static void add(Disposable disposable){
 		getCompositeDisposable().add(disposable);
+	}
+
+	public static void dispose(){
+		getCompositeDisposable().dispose();
 	}
 
 	private static CompositeDisposable getCompositeDisposable(){
